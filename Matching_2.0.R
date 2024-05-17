@@ -18,29 +18,31 @@ setwd("/Users/stefanoandre/Dropbox")
 #set periods:
 first<-1919
 second<-1924
-#Load Data: First period
+
+#Load Data:
+#First period
 path <- paste0("Directories/output/derived/directories/munich_", first, "_inh_clean.RDS")
-data <- readRDS(path)
-name <- paste0("inhabitants_", first)
-assign(name, data)
+inhabitants1 <- readRDS(path)
+# name <- paste0("inhabitants_", first)
+# assign(name, data)
 
 #Second period
 path <- paste0("Directories/output/derived/directories/munich_", second, "_inh_clean.RDS")
-data <- readRDS(path)
-name <- paste0("inhabitants_", second)
-assign(name, data)
-rm(data)
+inhabitants2 <- readRDS(path)
+#name <- paste0("inhabitants_", second)
+#assign(name, data)
+#rm(data)
 
 
-#remove_dups<-function()
+
 
 #get dups:
-#dups1 <- inhabitants_1919[duplicated(inhabitants_1919[, c("full_name", "address")]) | duplicated(inhabitants_1919[, c("full_name", "address")], fromLast = TRUE), ]
-#dups2 <- inhabitants_1924[duplicated(inhabitants_1924[, c("full_name", "address")]) | duplicated(inhabitants_1924[, c("full_name", "address")], fromLast = TRUE), ]
+#dups1 <- inhabitants1[duplicated(inhabitants1[, c("full_name", "address")]) | duplicated(inhabitants1[, c("full_name", "address")], fromLast = TRUE), ]
+#dups2 <- inhabitants2[duplicated(inhabitants2[, c("full_name", "address")]) | duplicated(inhabitants2[, c("full_name", "address")], fromLast = TRUE), ]
 
 #remove dups
-inhabitants_1919<- inhabitants_1919[!duplicated(inhabitants_1919[, c("full_name","address")],fromLast = TRUE), ]
-inhabitants_1924<- inhabitants_1924[!duplicated(inhabitants_1924[, c("full_name","address")],fromLast = TRUE), ]
+inhabitants1<- inhabitants1[!duplicated(inhabitants1[, c("full_name","address")],fromLast = TRUE), ]
+inhabitants2<- inhabitants2[!duplicated(inhabitants2[, c("full_name","address")],fromLast = TRUE), ]
 
 
 ###STEP 1-4 - (SOURCING)
@@ -53,9 +55,9 @@ source("/Users/stefanoandre/GitHub/Test/Source/merge_string.R") #merge_string (S
 
 ### Which addresses are in both?
 address_merge <- function(firstperiod,secondperiod) {
-  df1 <- paste0("inhabitants_",firstperiod)
+  df1 <- paste0("inhabitants",firstperiod)
   df1 <- get(df1)
-  df2 <- paste0("inhabitants_",secondperiod)
+  df2 <- paste0("inhabitants",secondperiod)
   df2 <- get(df2)
   inhabitants_1 <- df1 %>% filter(!is.na(first_name)&owner==0) #Why ownwer == 0?
   inhabitants_2 <- df2 %>% filter(!is.na(first_name)&owner==0)
@@ -83,14 +85,14 @@ address_merge <- function(firstperiod,secondperiod) {
 }
 
 #Apply to get addresses found in both years:
-addresses_both <- address_merge(first, second)
+addresses_both <- address_merge(1, 2)
 
 
 ### First step: filter by address that exist in both
 
 prepare_inhabitants <- function(firstperiod,address) {
   
-  df1 <- paste0("inhabitants_",firstperiod)
+  df1 <- paste0("inhabitants",firstperiod)
   df1 <- get(df1)
   inh <- df1 %>% filter(!is.na(first_name)&owner==0)#Why owner == 0?
   
@@ -106,11 +108,11 @@ prepare_inhabitants <- function(firstperiod,address) {
 }
 
 #Inhabitants data with addresses that exist in both periods:
-inh_1919 <- prepare_inhabitants(first,addresses_both) 
-inh_1924 <- prepare_inhabitants(second,addresses_both)
+inh_1 <- prepare_inhabitants(1,addresses_both) 
+inh_2 <- prepare_inhabitants(2,addresses_both)
 
 #DF with secondperiod widows:
-widows <- inhabitants_1924 %>%
+widows <- inhabitants2 %>%
   filter(widow==1)
 widows <- widows %>%
   select(id_inh,full_name, address)
@@ -171,7 +173,7 @@ unmatched_2<-result4[[5]]
 
 ############################################
 #STEP 5 - Bind all matches 
-rate<-100*(nrow(merged)/nrow(inh_1919))
+rate<-100*(nrow(merged)/nrow(inh_1))
 print(rate)
 
 #Rename cols
@@ -182,7 +184,7 @@ merged <- merged %>%
 all<-bind_rows(merged,unmatched_2)
 #check
 check<-all%>%
-  anti_join(inh_1924,by= c("id_inh"))
+  anti_join(inh_2,by= c("id_inh"))
 rm(check)
 
 #Addding columns for found and moved
