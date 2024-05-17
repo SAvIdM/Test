@@ -44,10 +44,10 @@ inhabitants_1924<- inhabitants_1924[!duplicated(inhabitants_1924[, c("full_name"
 
 
 ###STEP 1-4 - (SOURCING)
-source("/Users/stefanoandre/Desktop/TESTSTUFF/Matching/merge_fullname_address_2.R") #merge_fullname_address (STEP 1)
-source("/Users/stefanoandre/Desktop/TESTSTUFF/Matching/merge_fullname_2.R") #merge_fullname (STEP 2)
-source("/Users/stefanoandre/Desktop/TESTSTUFF/Matching/merge_widow_2.R") #merge_widow (STEP 3)
-source("/Users/stefanoandre/Desktop/TESTSTUFF/Matching/merge_string.R") #merge_string (STEP 4)
+source("/Users/stefanoandre/GitHub/Test/Source/merge_fullname_address_2.R") #merge_fullname_address (STEP 1)
+source("/Users/stefanoandre/GitHub/Test/Source/merge_fullname_2.R") #merge_fullname (STEP 2)
+source("/Users/stefanoandre/GitHub/Test/Source/merge_widow_2.R") #merge_widow (STEP 3)
+source("/Users/stefanoandre/GitHub/Test/Source/merge_string.R") #merge_string (STEP 4)
 ############################################
 ### STEP 0 - Prepare data:
 
