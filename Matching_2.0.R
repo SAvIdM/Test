@@ -1,5 +1,6 @@
 #Matching code 2.0
 ###Matching 1919--1924 inhabitants
+#To do: make this whole script a functiion so that it can be sourced 
 #Clear env.
 rm(list=ls())
 
@@ -32,7 +33,6 @@ inhabitants2 <- readRDS(path)
 #name <- paste0("inhabitants_", second)
 #assign(name, data)
 #rm(data)
-
 
 
 
