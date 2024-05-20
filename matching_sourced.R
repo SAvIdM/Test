@@ -1,9 +1,10 @@
 #Clear env.
 rm(list=ls())
 
-#Set Path:
+#Set path to dropbox and create a path to your github
 #Stefano
-setwd("/Users/stefanoandre/Dropbox")
+setwd("/Users/stefanoandre/Dropbox/")
+pathgt<-"/Users/stefanoandre/GitHub" 
 
 #set periods:
 first<-1919
@@ -38,11 +39,11 @@ match_inhabitants <- function(inhabitants1, inhabitants2) {
   
   
   ###SOURCING STEPS 1-4
-  source("/Users/stefanoandre/GitHub/Test/Source/merge_fullname_address.R") #merge_fullname_address (STEP 1)
-  source("/Users/stefanoandre/GitHub/Test/Source/merge_fullname.R") #merge_fullname (STEP 2)
-  source("/Users/stefanoandre/GitHub/Test/Source/merge_widow.R") #merge_widow (STEP 3)
-  source("/Users/stefanoandre/GitHub/Test/Source/merge_string.R") #merge_string (STEP 4)
-
+  source(paste0(pathgt,"/Test/Source/merge_fullname_address.R"))
+  source(paste0(pathgt,"/Test/Source/merge_fullname.R"))
+  source(paste0(pathgt,"/Test/Source/merge_widow.R"))
+  source(paste0(pathgt,"/Test/Source/merge_string.R"))
+  
   
   
   ############################################
