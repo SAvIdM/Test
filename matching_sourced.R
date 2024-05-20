@@ -154,7 +154,9 @@ match_inhabitants <- function(inhabitants1, inhabitants2) {
   ############################################
   # STEP 5 - Bind all matches 
   rate <- 100 * (nrow(merged) / nrow(inh_1))
-  print(rate)
+  message <- sprintf("We find %.2f%% of inhabitants", rate)
+  
+  print(message)
   
   # Rename cols
   merged <- merged %>%
