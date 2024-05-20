@@ -40,9 +40,9 @@ match_inhabitants <- function(inhabitants1, inhabitants2) {
   
   
   ###SOURCING STEPS 1-4
-  source("/Users/stefanoandre/GitHub/Test/Source/merge_fullname_address_2.R") #merge_fullname_address (STEP 1)
-  source("/Users/stefanoandre/GitHub/Test/Source/merge_fullname_2.R") #merge_fullname (STEP 2)
-  source("/Users/stefanoandre/GitHub/Test/Source/merge_widow_2.R") #merge_widow (STEP 3)
+  source("/Users/stefanoandre/GitHub/Test/Source/merge_fullname_address.R") #merge_fullname_address (STEP 1)
+  source("/Users/stefanoandre/GitHub/Test/Source/merge_fullname.R") #merge_fullname (STEP 2)
+  source("/Users/stefanoandre/GitHub/Test/Source/merge_widow.R") #merge_widow (STEP 3)
   source("/Users/stefanoandre/GitHub/Test/Source/merge_string.R") #merge_string (STEP 4)
 
   
