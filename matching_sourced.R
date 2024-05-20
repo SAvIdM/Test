@@ -13,8 +13,6 @@ second<-1924
 #First period
 path <- paste0("Directories/output/derived/directories/munich_", first, "_inh_clean.RDS")
 inhabitants1 <- readRDS(path)
-# name <- paste0("inhabitants_", first)
-# assign(name, data)
 
 #Second period
 path <- paste0("Directories/output/derived/directories/munich_", second, "_inh_clean.RDS")
