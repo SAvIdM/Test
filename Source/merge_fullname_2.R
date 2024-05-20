@@ -1,5 +1,5 @@
 
-#Fullname merge function
+#Fullname merge function###
 merge_fullname <- function(merged,firstperiod,secondperiod,unmatched_1,unmatched_2) {
   
   inh1 <- paste0("inh_",firstperiod)
