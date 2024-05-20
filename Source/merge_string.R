@@ -1,9 +1,7 @@
-merge_string<-function(merged,firstperiod,secondperiod,stringcut){ 
+merge_string<-function(merged,inh_1,inh_2,unmatched_1,unmatched_2,stringcut){ 
   
-  inh1 <- paste0("inh_",firstperiod)
-  inh1 <- get(inh1)
-  inh2 <- paste0("inh_",secondperiod)
-  inh2 <- get(inh2)
+  inh1 <- inh_1
+  inh2 <- inh_2
   
   df <-merged %>%
     select(id_inh.x,id_inh.y,year.x,year.y)
@@ -11,12 +9,12 @@ merge_string<-function(merged,firstperiod,secondperiod,stringcut){
   
   
   #1919
-  unmatched_1<-inh1%>%
-    anti_join(df, join_by("id_inh" == "id_inh.x"))
+  #unmatched_1<-inh1%>%
+   # anti_join(df, join_by("id_inh" == "id_inh.x"))
   
   #1924 unmatched
-  unmatched_2<-inh2%>%
-    anti_join(df, join_by("id_inh" == "id_inh.y"))
+ # unmatched_2<-inh2%>%
+  #  anti_join(df, join_by("id_inh" == "id_inh.y"))
   
   
   

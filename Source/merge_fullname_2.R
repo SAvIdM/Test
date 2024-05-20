@@ -1,11 +1,10 @@
 
 #Fullname merge function###
-merge_fullname <- function(merged,firstperiod,secondperiod,unmatched_1,unmatched_2) {
+merge_fullname <- function(merged,inh_1,inh_2,unmatched_1,unmatched_2) {
   
-  inh1 <- paste0("inh_",firstperiod)
-  inh1 <- get(inh1)
-  inh2 <- paste0("inh_",secondperiod)
-  inh2 <- get(inh2)
+  inh1 <- inh_1
+  inh2 <- inh_2
+
   
   
   df1 <- unmatched_1[!duplicated(unmatched_1[, c("full_name")]), ]

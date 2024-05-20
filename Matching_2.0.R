@@ -119,7 +119,7 @@ widows <- widows %>%
 
 ############################################
 ###STEP 1 - FULLNAME + ADDRESS 
-result1<-merge_fullname_address(1,2)
+result1<-merge_fullname_address(inh_1,inh_2,second)
 merge <-result1[[1]]  #All inhabitants in second period + matching ones from first period                
 matched_1 <- result1[[2]]   #Only full matches               
 merged <-result1[[2]]   #All merged so far
@@ -136,7 +136,7 @@ rm(check)
 ############################################
 ###STEP 2 - FULLNAME (same person, different address)
 #Apply function:
-result2 <-merge_fullname(merged,1,2,unmatched_1,unmatched_2) 
+result2 <-merge_fullname(merged, inh_1, inh_2, unmatched_1, unmatched_2) 
 merge<-result2[[1]] #from whats left: all 1924 inhabitants + matching inhabitants from 1919
 matched_2<-result2[[2]] #only matches from this step 
 merged<-result2[[3]]  #all matches so far
@@ -150,7 +150,7 @@ rm(check)
 
 ############################################
 #STEP 3 - TO DO: Recheck the dups in the "widowmatch" df
-result3 <-merge_widow(merged,1,2,widows,unmatched_1,unmatched_2)
+result3 <-merge_widow(merged, inh_1, inh_2, widows, unmatched_1, unmatched_2)
 merge3<-result3[[1]] #all second period + matching from first period
 matched_3<-result3[[2]] #full matches in this step
 merged<-result3[[3]] #all matches so far
@@ -164,7 +164,7 @@ rm(check)
 
 ############################################
 #STEP 4 - String matching
-result4 <-merge_string(merged,1,2,3)
+result4 <-merge_string(merged, inh_1, inh_2, unmatched_1, unmatched_2,3)
 merge4<-result4[[1]] #merged in this step
 matched_4<-result4[[2]]#same w/ thing less cols
 merged<-result4[[3]] #all merged up to this step

@@ -1,13 +1,10 @@
 
 
 
-merge_widow <- function(merged,firstperiod,secondperiod,widows,unmatched_1,unmatched_2) {
+merge_widow <- function(merged,inh_1,inh_2,widows,unmatched_1,unmatched_2) {
   
-  inh1 <- paste0("inh_",firstperiod)
-  inh1 <- get(inh1)
-  inh2 <- paste0("inh_",secondperiod)
-  inh2 <- get(inh2)
-  total<-merged
+  inh1 <- inh_1
+  inh2 <- inh_2
   
   #Match 1919 widows to 1924: this step should be a inner_join?
   widowmatch <- right_join(x=unmatched_2, y=widows,

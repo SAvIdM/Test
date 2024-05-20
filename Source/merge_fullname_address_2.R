@@ -1,10 +1,9 @@
 # requires inh_
-merge_fullname_address <- function(firstperiod,secondperiod) {
+merge_fullname_address <- function(inh1,inh2,second) {
   
-  inh1 <- paste0("inh_",firstperiod)
-  inh1 <- get(inh1)
-  inh2 <- paste0("inh_",secondperiod)
-  inh2 <- get(inh2)
+  #inh1 <- inh1
+  
+  #inh2 <- inh2
   
   # First period no dups
   df1 <- inh1[!duplicated(inh1[, c("full_name", "address")]), ]
@@ -19,7 +18,7 @@ merge_fullname_address <- function(firstperiod,secondperiod) {
                    keep = TRUE)
   
   df$both <- ifelse(!is.na(df$year.x),1,0)
-  print(paste(sprintf("%.1f%%",100*sum(df$both)/nrow(inh1))," of individuals live in the same address in period ", secondperiod))
+  print(paste(sprintf("%.1f%%",100*sum(df$both)/nrow(inh1))," of individuals live in the same address in period ", second))
   df<-df%>%
     select(-both)
   
